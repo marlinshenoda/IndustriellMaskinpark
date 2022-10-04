@@ -1,0 +1,12 @@
+﻿@page "/"
+@using IndustriellMaskinpark.Models
+
+<PageTitle>Index</PageTitle>
+
+<MachineOverView Machine="machines"></MachineOverView>
+
+@code{
+
+
+    private List<Machine> machines = new List<Machine>();
+}

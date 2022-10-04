@@ -1,0 +1,65 @@
+﻿@using IndustriellMaskinpark.Models
+
+<h4 class ="p-3">List Of Devices</h4>
+@if (SeedData == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+
+
+
+ <table class="table">
+        <thead>
+            <tr>
+                <th>DeviceId</th>
+                <th>Location</th>
+                <th>Date </th>
+                <th>Type</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var machine in SeedData.Machine)
+            {
+                <tr>
+                    <td>@machine.DeviceId</td>
+                    <td>@machine.Location</td>
+                    <td>@machine.DataTime</td>
+                    <td>@machine.Type</td>
+                    <td>  
+                        @if (machine.Status==0)
+                {
+                    <div type="button" class="btn btn-success">
+                        @machine.Status
+                    </div>
+                }
+                else
+                {
+                    <div type="button" class="btn btn-danger ">
+                        @machine.Status
+                    </div>
+                }
+                    </td>
+                    <td>   
+                        <button @onclick="() => Remove(machine)" class="btn btn-danger"><i class="fa fa-remove"></i></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+@code {
+  [Parameter]
+  public List<Machine> Machine { get; set; } = new List<Machine>();
+      private void Remove(Machine machine){
+
+        //ToDo call api
+        Machine.Remove(machine);
+    }
+}
+}
