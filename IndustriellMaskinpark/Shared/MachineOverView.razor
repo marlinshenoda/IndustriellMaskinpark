@@ -7,8 +7,9 @@
 }
 else
 {
-
-
+    <div >
+    <button  @onclick="() => Add()" style="background-color:purple; text-align:right">Add Device</button>
+    </div>
 
  <table class="table">
         <thead>
@@ -32,13 +33,13 @@ else
                     <td>  
                         @if (machine.Status==0)
                 {
-                    <div type="button" class="btn btn-success">
+                    <div type="button" class="btn  btn-outline-success rounded">
                         @machine.Status
                     </div>
                 }
                 else
                 {
-                    <div type="button" class="btn btn-danger ">
+                    <div type="button" class="btn btn-outline-danger ">
                         @machine.Status
                     </div>
                 }
@@ -68,7 +69,12 @@ else
       private void Remove(Machine machine){
 
         //ToDo call api
-        Machine.Remove(machine);
+       SeedData.Machine.Remove(machine);
     }
+       private void Add()
+        {
+            SeedData.Machine.Add(new Machine {  DeviceId = Guid.NewGuid(), Status = Shared.Status.Offline,Type = "New Shiny" , Location= "Kanda",DataTime=new DateTime (2016, 5, 2), });
+        }
+   
 }
 }
