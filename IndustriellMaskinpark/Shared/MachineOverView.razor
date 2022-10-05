@@ -1,5 +1,5 @@
 ﻿@using IndustriellMaskinpark.Models
-
+<div id="list">
 <h4 class ="p-3">List Of Devices</h4>
 @if (SeedData == null)
 {
@@ -8,7 +8,7 @@
 else
 {
     <div >
-    <button  @onclick="() => Add()" style="background-color:purple; text-align:right">Add Device</button>
+    <button  @onclick="() => Add()" style="background-color:#9370DB; text-align:left">Add Device</button>
     </div>
 
  <table class="table">
@@ -48,7 +48,7 @@ else
                         <a @onclick="() => Remove(machine)" ><img style="margin: 5px 0px 0px 5px"  src="trash.svg" alt="Alternate Text" /></a>
                         <a  ><img style="margin: 5px 0px 0px 5px"  src="pencil-square.svg" alt="Alternate Text" /></a>
 
-                        <a  ><img style="margin: 5px 0px 0px 5px"  src="info-square.svg" alt="Alternate Text" /></a>
+                        <a href="@($"MachineDetails/{machine.DeviceId}")"  ><img style="margin: 5px 0px 0px 5px"  src="info-square.svg" alt="Alternate Text" /></a>
 
                     </td> 
                     <td>   
@@ -78,3 +78,4 @@ else
    
 }
 }
+</div>
