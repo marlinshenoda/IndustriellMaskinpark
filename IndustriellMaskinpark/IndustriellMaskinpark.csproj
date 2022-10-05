@@ -7,6 +7,92 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="wwwroot - Copy\css\app.css" />
+    <None Remove="wwwroot - Copy\css\bootstrap\bootstrap.min.css" />
+    <None Remove="wwwroot - Copy\css\bootstrap\bootstrap.min.css.map" />
+    <None Remove="wwwroot - Copy\css\open-iconic\FONT-LICENSE" />
+    <None Remove="wwwroot - Copy\css\open-iconic\font\css\open-iconic-bootstrap.min.css" />
+    <None Remove="wwwroot - Copy\css\open-iconic\font\fonts\open-iconic.eot" />
+    <None Remove="wwwroot - Copy\css\open-iconic\font\fonts\open-iconic.otf" />
+    <None Remove="wwwroot - Copy\css\open-iconic\font\fonts\open-iconic.svg" />
+    <None Remove="wwwroot - Copy\css\open-iconic\font\fonts\open-iconic.ttf" />
+    <None Remove="wwwroot - Copy\css\open-iconic\font\fonts\open-iconic.woff" />
+    <None Remove="wwwroot - Copy\css\open-iconic\ICON-LICENSE" />
+    <None Remove="wwwroot - Copy\css\open-iconic\README.md" />
+    <None Remove="wwwroot - Copy\favicon.ico" />
+    <None Remove="wwwroot - Copy\icon-192.png" />
+    <None Remove="wwwroot - Copy\index.html" />
+    <None Remove="wwwroot - Copy\trash.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot - Copy\css\app.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot - Copy\css\bootstrap\bootstrap.min.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot - Copy\css\bootstrap\bootstrap.min.css.map">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot - Copy\css\open-iconic\FONT-LICENSE">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot - Copy\css\open-iconic\font\css\open-iconic-bootstrap.min.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot - Copy\css\open-iconic\font\fonts\open-iconic.eot">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot - Copy\css\open-iconic\font\fonts\open-iconic.otf">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot - Copy\css\open-iconic\font\fonts\open-iconic.svg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot - Copy\css\open-iconic\font\fonts\open-iconic.ttf">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot - Copy\css\open-iconic\font\fonts\open-iconic.woff">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot - Copy\css\open-iconic\ICON-LICENSE">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot - Copy\css\open-iconic\README.md">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot - Copy\favicon.ico">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot - Copy\icon-192.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot - Copy\index.html">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot - Copy\trash.svg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.3" PrivateAssets="all" />
   </ItemGroup>

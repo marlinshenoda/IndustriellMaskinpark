@@ -43,9 +43,18 @@ else
                     </div>
                 }
                     </td>
+                    <td >   
+                        <a @onclick="() => Remove(machine)" ><img style="margin: 5px 0px 0px 5px"  src="trash.svg" alt="Alternate Text" /></a>
+                        <a  ><img style="margin: 5px 0px 0px 5px"  src="pencil-square.svg" alt="Alternate Text" /></a>
+
+                        <a  ><img style="margin: 5px 0px 0px 5px"  src="info-square.svg" alt="Alternate Text" /></a>
+
+                    </td> 
                     <td>   
-                        <button @onclick="() => Remove(machine)" class="btn btn-danger"><i class="fa fa-remove"></i></button>
-                    </td>
+                    </td>   
+                    <td>   
+                    </td> 
+                   
                 </tr>
             }
         </tbody>
