@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Maskinpark.Shared;
+using Microsoft.AspNetCore.Components;
 
 namespace IndustriellMaskinpark.Shared
 {

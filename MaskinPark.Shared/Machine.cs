@@ -1,12 +1,13 @@
-﻿using IndustriellMaskinpark.Shared;
+﻿
+using Maskinpark.Shared;
 
-namespace IndustriellMaskinpark.Models
+namespace MaskinPark.Shared
 {
     public class Machine
     {
         public Guid DeviceId { get; set; } = Guid.NewGuid();
 
-        public string Location { get; set; }=string.Empty;
+        public string Location { get; set; } = string.Empty;
 
         public Status Status { get; set; } = Status.Offline;
 

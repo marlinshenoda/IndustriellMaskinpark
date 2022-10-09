@@ -1,6 +1,8 @@
-﻿@using IndustriellMaskinpark.Models
+﻿@using MaskinPark.Shared
+
 <div id="list">
 <h4 class ="p-3">List Of Devices</h4>
+
 @if (SeedData == null)
 {
     <p><em>Loading...</em></p>
@@ -23,7 +25,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var machine in SeedData.Machine)
+            @foreach (var machine in Machine)
             {
                 <tr>
                     <td>@machine.DeviceId</td>
@@ -69,11 +71,11 @@ else
       private void Remove(Machine machine){
 
         //ToDo call api
-       SeedData.Machine.Remove(machine);
+       Machine.Remove(machine);
     }
        private void Add()
         {
-            SeedData.Machine.Add(new Machine {  DeviceId = Guid.NewGuid(), Status = Shared.Status.Offline,Type = "New Shiny" , Location= "Kanda",DataTime=new DateTime (2016, 5, 2), });
+            Machine.Add(new Machine {  DeviceId = Guid.NewGuid(), Status = Status.Offline,Type = "New Shiny" , Location= "Kanda",DataTime=new DateTime (2016, 5, 2), });
         }
    
 }

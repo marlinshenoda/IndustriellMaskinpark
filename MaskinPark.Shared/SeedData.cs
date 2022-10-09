@@ -1,7 +1,6 @@
 ﻿
-using IndustriellMaskinpark.Models;
-
-namespace IndustriellMaskinpark
+using MaskinPark.Shared;
+namespace Maskinpark.Shared
 {
     public class SeedData
     {

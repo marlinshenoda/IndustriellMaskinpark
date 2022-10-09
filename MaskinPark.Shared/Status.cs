@@ -1,4 +1,4 @@
-﻿namespace IndustriellMaskinpark.Shared
+﻿namespace Maskinpark.Shared
 {
     public enum Status
     {
