@@ -1,57 +1,63 @@
 ﻿@page "/fetchdata"
 @inject HttpClient Http
+@using MaskinPark.Shared
 
-<PageTitle>Weather forecast</PageTitle>
+<PageTitle>Create Machine</PageTitle>
 
-<h1>Weather forecast</h1>
-
-<p>This component demonstrates fetching data from the server.</p>
-
-@if (forecasts == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-
+<div class="row" style="">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label style="display: visable"runat="server" asp-for="Type" ></label>
+                <input asp-for="Type" class="form-control" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataTime" class="control-label"></label>
+                <input asp-for="DataTime" class="form-control" />
+                <span asp-validation-for="DataTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" onclick="OnAdd()" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+ 
 @code {
-    private WeatherForecast[]? forecasts;
+     [Parameter]
+  public List<Machine> Machine { get; set; } = new List<Machine>();
+    [Inject]
+    public IToDoClient ToDoClient { get; set; } = default!;
 
-    protected override async Task OnInitializedAsync()
+    private Machine machine = new Machine();
+
+
+    [Parameter]
+    public EventCallback<Machine> Add { get; set; }
+
+    public async Task OnAdd()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        await Add.InvokeAsync(machine);
     }
 
-    public class WeatherForecast
-    {
-        public DateTime Date { get; set; }
+    private async Task AddItem(Machine machine) {
+        // var newItem = new CreateItem { Text = text };
 
-        public int TemperatureC { get; set; }
+        var createdItem = await ToDoClient.PostAsync(machine);
 
-        public string? Summary { get; set; }
-
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+        if (createdItem != null)
+            Machine.Add(createdItem);
     }
+
 }

@@ -3,14 +3,8 @@
 <div id="list">
 <h4 class ="p-3">List Of Devices</h4>
 
-@if (SeedData == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
     <div >
-    <button  @onclick="() => Add()" style="background-color:#9370DB; text-align:left">Add Device</button>
+    <a  href="@($"FetchData")" style="background-color:#9370DB; float:right">Add Device</a>
     </div>
 
  <table class="table">
@@ -73,11 +67,38 @@ else
         //ToDo call api
        Machine.Remove(machine);
     }
-       private void Add()
-        {
-            Machine.Add(new Machine {  DeviceId = Guid.NewGuid(), Status = Status.Offline,Type = "New Shiny" , Location= "Kanda",DataTime=new DateTime (2016, 5, 2), });
-        }
-   
+       //private void Add()
+       // {
+       //     Machine.Add(new Machine {  DeviceId = Guid.NewGuid(), Status = Status.Offline,Type = "New Shiny" , Location= "Kanda",DataTime=new DateTime (2016, 5, 2), });
+       // }
+
+    [Inject]
+    public IToDoClient ToDoClient { get; set; } = default!;
+
+        private Machine machine = new Machine();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Machine = (await ToDoClient.GetAsync())?.ToList();
+    }
+
+       [Parameter]
+    public EventCallback<Machine> Add { get; set; }
+
+    public async Task OnAdd()
+    {
+        await Add.InvokeAsync(machine);
+    }
+
+      private async Task AddItem(Machine machine){
+       // var newItem = new CreateItem { Text = text };
+
+        var createdItem = await ToDoClient.PostAsync(machine);
+
+        if(createdItem != null)
+              Machine.Add(createdItem);
+    }
+
 }
-}
+
 </div>
