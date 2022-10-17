@@ -1,5 +1,6 @@
 ﻿
 using Maskinpark.Shared;
+using System.ComponentModel.DataAnnotations;
 
 namespace MaskinPark.Shared
 {
@@ -11,6 +12,7 @@ namespace MaskinPark.Shared
 
         public Status Status { get; set; } = Status.Offline;
 
+        [StringLength(5)]
         public string Type { get; set; }
 
         public DateTime DataTime { get; set; }

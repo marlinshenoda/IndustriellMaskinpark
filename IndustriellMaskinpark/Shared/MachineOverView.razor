@@ -60,8 +60,8 @@
 
 
 @code {
-  [Parameter]
   public List<Machine> Machine { get; set; } = new List<Machine>();
+
       private void Remove(Machine machine){
 
         //ToDo call api
@@ -82,13 +82,13 @@
         Machine = (await ToDoClient.GetAsync())?.ToList();
     }
 
-       [Parameter]
-    public EventCallback<Machine> Add { get; set; }
+    //   [Parameter]
+    //public EventCallback<Machine> Add { get; set; }
 
-    public async Task OnAdd()
-    {
-        await Add.InvokeAsync(machine);
-    }
+    //public async Task OnAdd()
+    //{
+    //    await Add.InvokeAsync(machine);
+    //}
 
       private async Task AddItem(Machine machine){
        // var newItem = new CreateItem { Text = text };

@@ -1,63 +1,72 @@
-﻿@page "/fetchdata"
-@inject HttpClient Http
-@using MaskinPark.Shared
+﻿@using MaskinPark.Shared
+@page "/fetchdata"
+@inject NavigationManager Navigation
 
 <PageTitle>Create Machine</PageTitle>
+    <EditForm Model="@machine" OnValidSubmit="AddItem">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
 
-<div class="row" style="">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div class="form-group">
-                <label style="display: visable"runat="server" asp-for="Type" ></label>
-                <input asp-for="Type" class="form-control" />
-                <span asp-validation-for="Type" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Location" class="control-label"></label>
-                <input asp-for="Location" class="form-control" />
-                <span asp-validation-for="Location" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataTime" class="control-label"></label>
-                <input asp-for="DataTime" class="form-control" />
-                <span asp-validation-for="DataTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" onclick="OnAdd()" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+    <div class="col-12">
+            <div class="col-12 row">
+            <label class="col-2 font-weight-bold">Type :</label>
+            <InputText class="form-control col-3" @bind-Value="machine.Type"  />
+            &nbsp;<ValidationMessage For="@(() => machine.Type)" />
+        </div>
+       <div class="col-12 row">
+            <label class="col-2 font-weight-bold">Status :</label>
+           @* <InputText class="form-control col-3" type="text" @bind-Value="@machine.Status" />*@
+           <InputSelect class="form-control col-3" @bind-Value="machine.Status">
+                @foreach (var value in Enum.GetValues<Status>())
+                {
+                    <option value="@value">@value</option>
+                }
+            </InputSelect>
+@*            &nbsp;<ValidationMessage For="@(() => machine.Status)" />
+*@        </div>
+           <div class="col-12 row">
+            <label class="col-2 font-weight-bold">Location :</label>
+            <InputText class="form-control col-3" @bind-Value="machine.Location"  />
+@*            &nbsp;<ValidationMessage For="@(() => machine.Location)" />
+*@        </div>
+             <div class="col-12 row">
+            <label class="col-2 font-weight-bold">Date Time :</label>
+            <InputDate class="form-control col-3" @bind-Value="machine.DataTime"  />
+         @*   &nbsp;<ValidationMessage For="@(() => machine.DataTime)" />*@
+        </div>
+                   <br />
  
+            <div class="form-group">
+            <input type="submit" class="form-control col-1 btn btn-primary" value="Save" />
+            </div>
+    </div>
+     </EditForm>
+
 @code {
-     [Parameter]
-  public List<Machine> Machine { get; set; } = new List<Machine>();
+    [Parameter]
+    public List<Machine> Machine { get; set; } = new List<Machine>();
     [Inject]
     public IToDoClient ToDoClient { get; set; } = default!;
 
-    private Machine machine = new Machine();
+    private Machine machine = new Machine(){DataTime = DateTime.Now};
 
 
-    [Parameter]
-    public EventCallback<Machine> Add { get; set; }
+    //[Parameter]
+    //public EventCallback<Machine> Add { get; set; }
 
-    public async Task OnAdd()
-    {
-        await Add.InvokeAsync(machine);
-    }
+    //public async Task OnAdd()
+    //{
+    //    await Add.InvokeAsync(machine);
+    //}
 
-    private async Task AddItem(Machine machine) {
+    private async Task AddItem() {
         // var newItem = new CreateItem { Text = text };
 
         var createdItem = await ToDoClient.PostAsync(machine);
 
         if (createdItem != null)
             Machine.Add(createdItem);
+
+        Navigation.NavigateTo("/");
     }
 
 }

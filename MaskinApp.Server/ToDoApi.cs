@@ -48,11 +48,11 @@ namespace MaskinApp.Server
             };
         }
 
-
+        //microsoft.azure .webjobs.extensions.storage version 4.0.5
         [FunctionName("CreateMachines")]
         public static async Task<IActionResult> Create(
           [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "ToDo")] HttpRequest req,
-         // [Table("machine", Connection = "AzureWebJobsStorage")] CloudTable itemTable, // IAsyncCollector<ItemTableEntity> itemTable,
+       //   [Table("machine", Connection = "AzureWebJobsStorage")] CloudTable itemTable, // IAsyncCollector<ItemTableEntity> itemTable,
           ILogger log)
         {
             log.LogInformation("Create item");
