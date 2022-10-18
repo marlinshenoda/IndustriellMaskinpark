@@ -6,11 +6,11 @@ namespace MaskinPark.Shared
 {
     public class Machine
     {
-        public Guid DeviceId { get; set; } = Guid.NewGuid();
+        public string DeviceId { get; set; } = Guid.NewGuid().ToString("n");
 
         public string Location { get; set; } = string.Empty;
 
-        public Status Status { get; set; } = Status.Offline;
+        public Status Status { get; set; } 
 
         [StringLength(5)]
         public string Type { get; set; }
